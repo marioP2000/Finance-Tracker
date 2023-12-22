@@ -199,9 +199,9 @@ const saveTransactionsToLocalStorage = () => {
   transition: all 0.3s ease-in; 
 }
 
-@media (max-width: 1200px) {
+@media (max-width: 1500px) {
   #transaction-menu-container {
-    min-width: 35vw;
+    min-width: 40vw;
   }
 }
 
@@ -211,7 +211,7 @@ const saveTransactionsToLocalStorage = () => {
   }
 
   #transaction-menu-container {
-        min-width: 45vw;
+    min-width: 45vw;
   }
 
   #add-transaction-button {
@@ -226,7 +226,10 @@ const saveTransactionsToLocalStorage = () => {
 
 @media (max-width: 600px) {
   #transaction-menu-container {
-      min-width: 100vw;
+    position: absolute;
+    top: 0;
+    left: 0;
+    min-width: 100vw;
   }
 }
 </style>
