@@ -5,7 +5,7 @@
       <!-- Navbar -->
       <nav>
         <RouterLink to="/" class="router-link">Home</RouterLink>
-        <RouterLink to="/about" class="router-link">Statistics</RouterLink>
+        <RouterLink to="/statistics" class="router-link">Statistics</RouterLink>
       </nav>
 
       <!-- Component Transitions -->

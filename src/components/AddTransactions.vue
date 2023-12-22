@@ -145,7 +145,7 @@ input {
 
   &:hover {
     color: $dark-font;
-    box-shadow: inset 150px 0 0 0 #dfdfdf;
+    box-shadow: inset 200px 0 0 0 #dfdfdf;
   }
 }
 

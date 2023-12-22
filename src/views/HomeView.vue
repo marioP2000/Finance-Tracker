@@ -142,7 +142,7 @@ const saveTransactionsToLocalStorage = () => {
 
   &:hover {
     color: $dark-font;
-    box-shadow: inset 220px 0 0 0 #dfdfdf;
+    box-shadow: inset 250px 0 0 0 #dfdfdf;
   }
 }
 
