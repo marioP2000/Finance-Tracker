@@ -1,7 +1,7 @@
 # Finance Tracker
 A web application I made for tracking basic income and expenses with categories and a page which displays the amount of money spent on each category. Everything gets added and saved to localstorage.
 
-## Technologies used in this project
+## What I used in this project
 * Vue.js
 * vue-toastification
 * Sass
