@@ -6,7 +6,7 @@
 
     <!-- Chart -->
     <ChartComponent
-    :hobby="+hobby" :taxes="+taxes" :repairs="+repairs" :housing="+housing" :transportation="+transportation" :income="+income" />
+    :hobby="+hobby" :taxes="+taxes" :repairs="+repairs" :housing="+housing" :transportation="+transportation" :expenses="+expenses" />
   </div>
 </template>
 
@@ -26,10 +26,11 @@ onMounted(() => {
   }
 });
 
-// Get income
-const income = computed(() => {
-  return transactions.value.filter((transaction) => transaction.amount > 0).reduce((acc, transaction) => {
-    return acc + transaction.amount;
+// Get expenses
+const expenses = computed(() => {
+  return transactions.value.filter((transaction) => transaction.amount < 0).reduce((acc, transaction) => {
+    let expensesNegative = acc - transaction.amount;
+    return Math.abs(expensesNegative);
   }, 0).toFixed(2);
 });
 

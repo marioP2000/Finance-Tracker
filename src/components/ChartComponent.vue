@@ -1,11 +1,7 @@
 <template>
 
     <h1 id="header">Chart</h1>
-    
-    <div id="note">
-        <h3>Note:</h3>
-        <p>Chart data will only show if income is present</p>
-    </div>
+    <h2>Category expenses compared to total expenses</h2>
 
     <div id="chart-container">
         <canvas id="myChart"></canvas>
@@ -37,7 +33,7 @@ const props = defineProps({
         type: Number,
         required: true
     },
-    income: {
+    expenses: {
         type: Number,
         required: true
     }
@@ -67,7 +63,7 @@ const labels = [
 const data = {
     labels: labels,
     datasets: [{
-        label: "Expenses relative to total income",
+        label: "Expense",
         backgroundColor: "rgba(255, 0, 0, 0.5)",
         data: []
     }]
@@ -99,8 +95,8 @@ onMounted(() => {
             config
         )
         
-        // Update income
-        myChart.config.options.scales.y.max = props.income;
+        // Update expenses
+        myChart.config.options.scales.y.max = props.expenses;
 
         // Update expenses
         myChart.data.datasets[0].data[0] = props.hobby;
@@ -129,19 +125,9 @@ onMounted(() => {
         height: 80vh;
     }
 
-    #note {
-        margin: 0 3.5%;
-    }
-
-    h3 {
-        display: inline;
+    h2 {
         color: $dark-font;
-    }
-
-    p {
-        display: inline;
-        margin-left: 0.5%;
-        font-size: 1.1rem;
-        color: $light-font;
+        margin: 0 3.5%;
+        margin-bottom: 1%;
     }
 </style>
