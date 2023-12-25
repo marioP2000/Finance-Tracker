@@ -13,7 +13,6 @@
     <!-- Transaction Amount -->
     <div>
       <label for="amount">Amount</label>
-      <p>(To add negative amounts prefix number with - symbol)</p>
       <input type="text" id="amount" v-model="amount" placeholder="Enter amount..." />
     </div>
 
@@ -81,6 +80,18 @@ const onSubmit = () => {
     expenseTypes.selectedIndex = 0;
     incomeTypes.selectedIndex = 0;
     return;
+  }
+
+  // Send error if number is negative
+  if(amount.value < 0) {
+    toast.error("Remove special characters before amount");
+    return;
+  }
+
+  // Convert positive amount to negative if expense type is selected
+  if(amount.value > 0 && expenseTypes.value) {
+    let value = -Math.abs(amount.value);
+    amount.value = value;
   }
 
   // Emit transaction data
