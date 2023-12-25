@@ -1,8 +1,9 @@
 <template>
+
+    <h1 id="header">Expenses</h1>
     
     <div id="stats-container">
 
-        <h1 id="header">Spendings:</h1>
 
         <!-- Hobby balance -->
         <div class="balance-container">
@@ -68,7 +69,7 @@ const props = defineProps({
 
 #stats-container {
     display: flex;
-    flex-direction: column;
+    flex-wrap: wrap;
     align-items: flex-start;
 }
 
@@ -79,7 +80,7 @@ const props = defineProps({
 
 // Container for each category
 .balance-container {
-    width: 95%;
+    min-width: 19vw;
     margin: 2.5%;
     padding: 1%;
     color: $dark-font;

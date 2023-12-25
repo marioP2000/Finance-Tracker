@@ -13,11 +13,12 @@
     <!-- Transaction Amount -->
     <div>
       <label for="amount">Amount</label>
+      <p>(To add negative amounts prefix number with - symbol)</p>
       <input type="text" id="amount" v-model="amount" placeholder="Enter amount..." />
     </div>
 
     <!-- Income Type -->
-    <div>
+    <div class="expense-income-container">
       <label for="incomeType">Income Type:</label>
       <select name="incomeTypes" id="incomeTypes">
         <option value="" disabled selected hidden>Select an income type</option>
@@ -25,10 +26,11 @@
         <option value="Investments">Investments</option>
         <option value="Other">Other</option>
       </select>
+      <div class="delete-btn" @click="clearIncome">x</div>
     </div>
 
     <!-- Expense Type -->
-    <div>
+    <div class="expense-income-container">
       <label for="expenseType">Expense Type:</label>
       <select name="expenseTypes" id="expenseTypes">
         <option value="" disabled selected hidden>Select an expense type</option>
@@ -38,6 +40,7 @@
         <option value="Housing">Housing</option>
         <option value="Transportation">Transportation</option>
       </select>
+      <div class="delete-btn" @click="clearExpense">x</div>
     </div>
 
     <!-- Transaction Date -->
@@ -72,6 +75,14 @@ const onSubmit = () => {
     return;
   }
 
+  // Send error message if both type fields are selected
+  if(incomeTypes.value && expenseTypes.value) {
+    toast.error("Choose either Income or Expense");
+    expenseTypes.selectedIndex = 0;
+    incomeTypes.selectedIndex = 0;
+    return;
+  }
+
   // Emit transaction data
   const transactionData = {
     text: text.value,
@@ -89,6 +100,14 @@ const onSubmit = () => {
   expenseTypes.selectedIndex = 0;
   incomeTypes.selectedIndex = 0;
   date.value = "";
+}
+
+const clearIncome = () => {
+  incomeTypes.selectedIndex = 0;
+}
+
+const clearExpense = () => {
+  expenseTypes.selectedIndex = 0;
 }
 </script>
 
@@ -131,6 +150,34 @@ input {
   outline: none;
 }
 
+// Clear fields button
+.expense-income-container {
+  position: relative;
+}
+
+.delete-btn {
+    position: absolute;
+    top: 50%;
+    right: 5%;
+    width: 25px;
+    height: 25px;
+    background: linear-gradient(45deg, red, rgb(204, 59, 59));
+    font-size: 1rem;
+    font-weight: bold;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: 0.2s;
+    padding: 1%;
+
+    &:hover {
+        width: 25px;
+        height: 25px;
+        box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.5);
+    }
+}
+
 // Submit button
 #submit-btn {
   padding: 2%;
@@ -158,5 +205,11 @@ select {
   background: none;
   border: none;
   border-bottom: 1px solid $border-color;
+}
+
+@media(width: 800px) {
+  form {
+    min-height: 100vh;
+  }
 }
 </style>

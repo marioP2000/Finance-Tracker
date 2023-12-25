@@ -1,12 +1,17 @@
 <template>
   <div class="about">
+    <!-- Expenses -->
     <CategoryBalance 
-    :salary="+salary" :investments="+investments" :other="+other"
     :hobby="+hobby" :taxes="+taxes" :repairs="+repairs" :housing="+housing" :transportation="+transportation" />
+
+    <!-- Chart -->
+    <ChartComponent
+    :hobby="+hobby" :taxes="+taxes" :repairs="+repairs" :housing="+housing" :transportation="+transportation" :income="+income" />
   </div>
 </template>
 
 <script setup>
+import ChartComponent from "@/components/ChartComponent.vue";
 import CategoryBalance from '@/components/CategoryBalance.vue';
 import { ref, computed, onMounted } from "vue";
 
@@ -21,59 +26,50 @@ onMounted(() => {
   }
 });
 
-// Get Salary income
-const salary = computed(() => {
-return transactions.value.filter((transaction) => transaction.incomeType === "Salary").reduce((acc, transaction) => {
-  return acc + transaction.amount;
-}, 0).toFixed(2);
-});
-
-// Get Investments income
-const investments = computed(() => {
-return transactions.value.filter((transaction) => transaction.incomeType === "Investments").reduce((acc, transaction) => {
-  return acc + transaction.amount;
-}, 0).toFixed(2);
-});
-
-// Get Other income
-const other = computed(() => {
-return transactions.value.filter((transaction) => transaction.incomeType === "Other").reduce((acc, transaction) => {
-  return acc + transaction.amount;
-}, 0).toFixed(2);
+// Get income
+const income = computed(() => {
+  return transactions.value.filter((transaction) => transaction.amount > 0).reduce((acc, transaction) => {
+    return acc + transaction.amount;
+  }, 0).toFixed(2);
 });
 
 // Get Hobby expense
 const hobby = computed(() => {
 return transactions.value.filter((transaction) => transaction.expenseType === "Hobby").reduce((acc, transaction) => {
-  return acc + transaction.amount;
+  let hobbyNegative = acc - transaction.amount;
+  return Math.abs(hobbyNegative);
 }, 0).toFixed(2);
 });
 
 // Get Taxes expense
 const taxes = computed(() => {
 return transactions.value.filter((transaction) => transaction.expenseType === "Taxes").reduce((acc, transaction) => {
-  return acc + transaction.amount;
+  let taxesNegative = acc - transaction.amount;
+  return Math.abs(taxesNegative);
 }, 0).toFixed(2);
 });
 
 // Get Repairs expense
 const repairs = computed(() => {
 return transactions.value.filter((transaction) => transaction.expenseType === "Repairs").reduce((acc, transaction) => {
-  return acc + transaction.amount;
+  let repairsNegative = acc - transaction.amount;
+  return Math.abs(repairsNegative);
 }, 0).toFixed(2);
 });
 
 // Get Housing expense
 const housing = computed(() => {
 return transactions.value.filter((transaction) => transaction.expenseType === "Housing").reduce((acc, transaction) => {
-  return acc + transaction.amount;
+  let housingNegative = acc - transaction.amount;
+  return Math.abs(housingNegative);
 }, 0).toFixed(2);
 });
 
 // Get Transportation expense
 const transportation = computed(() => {
 return transactions.value.filter((transaction) => transaction.expenseType === "Transportation").reduce((acc, transaction) => {
-  return acc + transaction.amount;
+  let transportationNegative = acc - transaction.amount;
+  return Math.abs(transportationNegative);
 }, 0).toFixed(2);
 });
 </script>

@@ -212,6 +212,7 @@ const saveTransactionsToLocalStorage = () => {
 
   #transaction-menu-container {
     min-width: 45vw;
+    min-height: 100vh;
   }
 
   #add-transaction-button {

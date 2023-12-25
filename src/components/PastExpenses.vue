@@ -1,6 +1,13 @@
 <template>
     <div id="past-expenses-container">
 
+        <div id="expense-example">
+            <h3 class="example">Name</h3>
+            <h4 class="example">Category</h4>
+            <h2 class="example">Amount</h2>
+            <p class="example">Date</p>
+        </div>
+
         <TransitionGroup name="list">
             <div class="expense" v-for="transaction in transactions" :key="transaction.id" :class="transaction.amount < 0 ? 'negative' : 'positive'">
 
@@ -152,6 +159,23 @@ p {
     }
 }
 
+#expense-example {
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    width: 100%;
+    margin: 1% 0;
+    padding: 0 1.5%;
+    border: 1px solid $border-color;
+    border-radius: 6px;
+}
+
+.example {
+    font-weight: bold;
+    font-size: 1.3rem;
+    color: $dark-font;
+}
+
 @media (max-width: 800px) {
     #transaction-menu-container {
         min-width: 45vw;
@@ -169,6 +193,10 @@ p {
     }
 
     #expense-content {
+        display: none;
+    }
+
+    #expense-example {
         display: none;
     }
 
