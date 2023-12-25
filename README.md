@@ -13,7 +13,7 @@ This is my first time using the Composition API in Vue, I wanted to familiarize 
 ## Things I want to add in the future
 * Sorting of the expenses by date
 * A better way to choose expenses and income with more options
-* ~~A graph on the home page which shows monthly expenditures and a % of each category relating to the total expenses of that month~~
+* ~~A graph on the home page which shows expenditures and a % of each category relating to the total expenses~~
 * Ways to see and add more in-depth data
 
 ## Live Example: 
