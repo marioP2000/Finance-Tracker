@@ -95,10 +95,10 @@ onMounted(() => {
             config
         )
         
-        // Update expenses
+        // Update total expenses
         myChart.config.options.scales.y.max = props.expenses;
 
-        // Update expenses
+        // Update expense categories
         myChart.data.datasets[0].data[0] = props.hobby;
         myChart.data.datasets[0].data[1] = props.taxes;
         myChart.data.datasets[0].data[2] = props.repairs;

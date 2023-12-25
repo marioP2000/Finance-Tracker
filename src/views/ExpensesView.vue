@@ -1,18 +1,18 @@
 <template>
   <div class="about">
     <!-- Expenses -->
-    <CategoryBalance 
+    <ExpensesCategories 
     :hobby="+hobby" :taxes="+taxes" :repairs="+repairs" :housing="+housing" :transportation="+transportation" />
 
     <!-- Chart -->
-    <ChartComponent
+    <ExpensesChart
     :hobby="+hobby" :taxes="+taxes" :repairs="+repairs" :housing="+housing" :transportation="+transportation" :expenses="+expenses" />
   </div>
 </template>
 
 <script setup>
-import ChartComponent from "@/components/ChartComponent.vue";
-import CategoryBalance from '@/components/CategoryBalance.vue';
+import ExpensesCategories from '@/components/ExpensesPage/ExpensesCategories.vue';
+import ExpensesChart from "@/components/ExpensesPage/ExpensesChart.vue";
 import { ref, computed, onMounted } from "vue";
 
 const transactions = ref([]);

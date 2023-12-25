@@ -5,7 +5,8 @@
       <!-- Navbar -->
       <nav>
         <RouterLink to="/" class="router-link">Home</RouterLink>
-        <RouterLink to="/statistics" class="router-link">Statistics</RouterLink>
+        <RouterLink to="/expenses" class="router-link">Expenses</RouterLink>
+        <RouterLink to="/income" class="router-link">Income</RouterLink>
       </nav>
 
       <!-- Component Transitions -->
